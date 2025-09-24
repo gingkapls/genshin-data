@@ -1,0 +1,22 @@
+{
+  "name": "genshin-data",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "type": "module",
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "jsdom": "^27.0.0",
+    "typescript": "^5.9.2"
+  },
+  "devDependencies": {
+    "@types/jsdom": "^21.1.7",
+    "@types/node": "^24.5.2",
+    "tsx": "^4.20.5"
+  }
+}
