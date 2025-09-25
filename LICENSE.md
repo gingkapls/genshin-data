@@ -1,0 +1,1 @@
+Genshin Impact, game content and materials are trademarks and copyrights of HoYoverse.
