@@ -9,8 +9,13 @@ function getCharRarity(row) {
 }
 
 function getPlayableCharsList(dom) {
-  const table = dom.window.document.querySelector("table.sortable tbody");
-  return Array.from(table.querySelectorAll("tr"));
+  const [playable, upcoming] = dom.window.document.querySelectorAll(
+    "table.sortable tbody"
+  );
+  const playableArr = Array.from(playable.querySelectorAll("tr"));
+  const upcomingArr = Array.from(upcoming.querySelectorAll("tr"));
+
+  return playableArr.concat(upcomingArr);
 }
 
 function getChars(dom) {
@@ -26,7 +31,6 @@ function getChars(dom) {
     return acc;
   }, {});
 
-
   return data;
 }
 
@@ -38,7 +42,7 @@ async function fetchCharacters() {
   const dom = new JSDOM(page);
 
   const list = getChars(dom);
-  console.log(`Fetched ${Object.keys(data).length} characters`);
+  console.log(`Fetched ${Object.keys(list).length} characters`);
 
   return list;
 }

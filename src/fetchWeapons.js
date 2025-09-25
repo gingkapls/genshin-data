@@ -1,8 +1,14 @@
 import { JSDOM } from "jsdom";
 
 function getWeaponsList(dom) {
-  const table = dom.window.document.querySelector("table.sortable tbody");
-  return Array.from(table.querySelectorAll("tr"));
+  const [current, upcoming] = dom.window.document.querySelectorAll(
+    "table.sortable tbody"
+  );
+
+  const curArr = Array.from(current.querySelectorAll("tr"));
+  const upcomingArr = Array.from(upcoming.querySelectorAll("tr"));
+
+  return curArr.concat(upcomingArr);
 }
 
 function getWeaponName(row) {
@@ -26,7 +32,6 @@ function getWeapons(dom) {
     return acc;
   }, {});
 
-
   return data;
 }
 
@@ -38,7 +43,7 @@ async function fetchWeapons() {
   const dom = new JSDOM(page);
 
   const list = getWeapons(dom);
-  console.debug(`Fetched ${Object.keys(data).length} weapons`);
+  console.debug(`Fetched ${Object.keys(list).length} weapons`);
 
   return list;
 }
