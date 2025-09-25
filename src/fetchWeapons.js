@@ -26,7 +26,6 @@ function getWeapons(dom) {
     return acc;
   }, {});
 
-  console.log(`Fetched ${Object.keys(data).length} weapons`);
 
   return data;
 }
@@ -39,9 +38,9 @@ async function fetchWeapons() {
   const dom = new JSDOM(page);
 
   const list = getWeapons(dom);
+  console.debug(`Fetched ${Object.keys(data).length} weapons`);
 
-  const data = { exportDate: new Date().valueOf(), ...list };
-  return data;
+  return list;
 }
 
 export { fetchWeapons };

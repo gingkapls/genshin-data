@@ -20,13 +20,12 @@ function getChars(dom) {
     const rarity = getCharRarity(cur);
 
     // There are some undefined rows for some reason
-    if (name === undefined) return acc;
+    if (name === undefined || rarity === undefined) return acc;
 
     acc[name] = rarity;
     return acc;
   }, {});
 
-  console.log(`Fetched ${Object.keys(data).length} characters`);
 
   return data;
 }
@@ -39,9 +38,9 @@ async function fetchCharacters() {
   const dom = new JSDOM(page);
 
   const list = getChars(dom);
+  console.log(`Fetched ${Object.keys(data).length} characters`);
 
-  const data = { exportDate: new Date().valueOf(), ...list };
-  return data;
+  return list;
 }
 
 export { fetchCharacters };
